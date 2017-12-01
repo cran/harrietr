@@ -1,6 +1,7 @@
 # `harrietr`: An `R` package for various phylogenetic and evolutionary biology data manipulations 
 
 [![Travis-CI Build Status](https://travis-ci.org/andersgs/harrietr.svg?branch=master)](https://travis-ci.org/andersgs/harrietr)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/harrietr)](https://cran.r-project.org/package=harrietr)
 
 ## Why `harrietr`:
 
@@ -16,8 +17,20 @@ language `R`.
 
 ## How to get it
 
-At the moment, the package is not in CRAN. So, to get it, please use 
-`devtools`:
+### From CRAN:
+
+1. Add `Bioconductor` to your list of default repositories:
+
+    `setRepositories(ind = 1:2)`
+
+2. Install `harrietr`:
+    
+    `install.packages("harrietr", dependencies = TRUE)`
+
+
+### Latest and gratest version from GitHub:
+
+You must use `devtools`:
 
 1. If you don't have `devtools` installed:
 
@@ -29,7 +42,7 @@ At the moment, the package is not in CRAN. So, to get it, please use
 
 3. Install `harrietr`:
 
-    `devtools::install_github("andersgs/harrietr@v0.1.0")`
+    `devtools::install_github("andersgs/harrietr")`
 
 ## How to use it
 
@@ -83,7 +96,7 @@ Assume you have a tree, and you want to understand what is the relationship
 between the branch lengths and the number of SNPs. The function `dist_long` 
 can help you get there:
 
-```
+```r
 library(harrietr)
 library(ggplot2)
 data("woodmouse")
@@ -97,7 +110,7 @@ ggplot(dist_df, aes(x = dist, y =  evol_dist)) +
 
 This will produce the following image:
 
-![](inst/exdata/images/example1.png)
+![](man/figures/example1.png)
 
 <a name="node_support"/>
 
@@ -108,7 +121,7 @@ the value of 50% is likely too low, these values are chosen only for illustratio
 purposes). The function `get_node_support` can help
 you get there:
 
-```
+```r
 library(ggtree)
 library(dplyr)
 library(harrietr)
@@ -123,7 +136,7 @@ p1 +
 
 This will produce the following image:
 
-![](inst/exdata/images/example2.png)
+![](man/figures/example2.png)
 
 <a name="group_stats"/>
 
@@ -133,7 +146,7 @@ These could be anything (e.g., MLST, sample source, host, etc.), and you want
 summary information among and between the groups (e.g., IQR, min/max dist). 
 You can use `dist_long` and `add_metadata` to generate the `data.frame` you need:
 
-```
+```r
 library(ggplot2)
 library(dplyr)
 library(harrietr)
@@ -159,4 +172,4 @@ dist_df %>%
 ```
 This will produce the following image:
 
-![](inst/exdata/images/example3.png)
+![](man/figures/example3.png)
